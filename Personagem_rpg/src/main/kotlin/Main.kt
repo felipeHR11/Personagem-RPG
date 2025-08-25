@@ -1,7 +1,5 @@
 fun main() {
-    // ------------------------
-    // Escolha do estilo de atributos
-    // ------------------------
+    //escoha do estilo
     println("Escolha o estilo:")
     println("1 - Clássico")
     println("2 - Aventureiro")
@@ -26,10 +24,7 @@ fun main() {
         atributos.forEach { (nome, valor) ->
             println("$nome: $valor")
         }
-
-        // ------------------------
-        // Escolha da Raça
-        // ------------------------
+        //escolha da raça
         println("\nEscolha sua Raça:")
         println("1 - Humano")
         println("2 - Elfo")
@@ -47,9 +42,7 @@ fun main() {
             }
         }
 
-        // ------------------------
-        // Escolha da Classe
-        // ------------------------
+      //escolha da classe
         println("\nEscolha sua Classe")
         println("1 - Guerreiro")
         println("2 - Clérigo")
@@ -67,9 +60,7 @@ fun main() {
             }
         }
 
-        // ------------------------
-        // Ficha Final
-        // ------------------------
+     //demostração dos valores finais
         println("\nFicha do Personagem")
         println("Raça: ${raca.javaClass.simpleName}")
         println("Classe: ${classe.javaClass.simpleName}")

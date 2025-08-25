@@ -27,9 +27,27 @@ class Aventureiro : Estilo {
     override fun gerarRolagens() = List(6) { rolar3d6() }
 
     override fun distribuir(rolagens: List<Int>): Map<String, Int> {
-        // aqui simulamos que o jogador escolhe — colocamos os maiores nos primeiros atributos
-        val ordenado = rolagens.sortedDescending()
-        return Estilo.nomesAtributos.zip(ordenado).toMap()
+        val atributosEscolhidos = mutableMapOf<String, Int>()
+        val disponiveis = rolagens.toMutableList()
+
+        println("Rolagens disponíveis: $disponiveis")
+
+        for (atributo in Estilo.nomesAtributos) {
+            println("Escolha um valor para $atributo entre $disponiveis:")
+            var escolha: Int
+            while (true) {
+                val entrada = readLine()
+                escolha = entrada?.toIntOrNull() ?: -1
+                if (disponiveis.contains(escolha)) {
+                    break
+                } else {
+                    println("Valor inválido. Tente novamente.")
+                }
+            }
+            atributosEscolhidos[atributo] = escolha
+            disponiveis.remove(escolha)
+        }
+        return atributosEscolhidos
     }
 }
 
@@ -42,7 +60,26 @@ class Heroico : Estilo {
     override fun gerarRolagens() = List(6) { rolar4d6DescartarMenor() }
 
     override fun distribuir(rolagens: List<Int>): Map<String, Int> {
-        val ordenado = rolagens.sortedDescending()
-        return Estilo.nomesAtributos.zip(ordenado).toMap()
+        val atributosEscolhidos = mutableMapOf<String, Int>()
+        val disponiveis = rolagens.toMutableList()
+
+        println("Rolagens disponíveis: $disponiveis")
+
+        for (atributo in Estilo.nomesAtributos) {
+            println("Escolha um valor para $atributo entre $disponiveis:")
+            var escolha: Int
+            while (true) {
+                val entrada = readLine()
+                escolha = entrada?.toIntOrNull() ?: -1
+                if (disponiveis.contains(escolha)) {
+                    break
+                } else {
+                    println("Valor inválido. Tente novamente.")
+                }
+            }
+            atributosEscolhidos[atributo] = escolha
+            disponiveis.remove(escolha)
+        }
+        return atributosEscolhidos
     }
 }
